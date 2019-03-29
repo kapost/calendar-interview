@@ -1,14 +1,21 @@
 import React from "react";
 import moment from "moment";
 
+import MonthView from "./monthView";
 import Header from "./header";
 
 import { calendarComponent, headerWrapper, viewWrapper, contextPanelWrapper, bodyWrapper } from "../styles/calendar.module.css";
 
+const VIEW_MAPPING = {
+  month: MonthView,
+};
 
 export default class Calendar extends React.Component {
   render() {
-    const { resolution } = this.getRouteParams();
+    const { resolution, ...dateParams } = this.getRouteParams();
+
+    const ViewComponent = VIEW_MAPPING[resolution] || MonthView;
+    const momentizedDate = this.getMomentizedDate();
 
     return (
       <div className={calendarComponent}>
@@ -16,7 +23,9 @@ export default class Calendar extends React.Component {
           <Header resolution={resolution} momentizedDate={this.getMomentizedDate()} />
         </div>
         <div className={bodyWrapper}>
-          <div className={viewWrapper} />
+          <div className={viewWrapper}>
+            <ViewComponent {...dateParams} momentizedDate={momentizedDate} />
+          </div>
           <div className={contextPanelWrapper} />
         </div>
       </div>
