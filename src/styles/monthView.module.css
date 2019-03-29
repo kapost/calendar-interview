@@ -1,2 +1,52 @@
+:root {
+  --min-cell-width: 100px;
+  --max-cell-width: 200px;
+}
+
 .monthViewComponent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.monthViewHeader {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+}
+
+.gridWrapper {
+  flex: 1 1 auto;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerItem {
+  flex: 1 1 calc(100% / 7);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.weekRow {
+  flex: 1 1 auto;
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+.gridCell {
+  flex: 1 1 0;
+  min-width: var(--min-cell-width);
+  padding: 10px;
+}
+
+.gridCell:not(:last-child) {
+  border-right: 1px solid lightgray;
+}
+
+.cellDate {
+  color: lightgray
 }
