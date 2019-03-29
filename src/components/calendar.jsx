@@ -20,7 +20,12 @@ export default class Calendar extends React.Component {
     return (
       <div className={calendarComponent}>
         <div className={headerWrapper}>
-          <Header resolution={resolution} momentizedDate={this.getMomentizedDate()} />
+          <Header
+            {...dateParams}
+            momentizedDate={this.getMomentizedDate()}
+            onChangeDate={this.handleChangeDate}
+            resolution={resolution}
+          />
         </div>
         <div className={bodyWrapper}>
           <div className={viewWrapper}>
@@ -44,5 +49,14 @@ export default class Calendar extends React.Component {
 
     return { resolution, year: Number(year), month: Number(month), day: Number(day) };
   }
+
+  handleChangeDate = (updates) => {
+    this.props.history.push(this.buildUrl(updates));
+  }
+
+  buildUrl = (params = {}) => {
+    const { resolution, year, month, day } = { ...this.getRouteParams(), ...params };
+
+    return `/${resolution}/${year}/${month}/${day}`;
   }
 }
