@@ -1,0 +1,20 @@
+.gridCellComponent {
+  flex: 1 1 0;
+  min-width: var(--min-cell-width);
+  padding: 10px;
+  color: lightgray;
+}
+
+.gridCellComponent:not(:last-child) {
+  border-right: 1px solid lightgray;
+}
+
+.thisMonthCell {
+  color: gray;
+}
+
+.todayCell {
+  color: black;
+  font-weight: 600;
+  text-decoration: underline;
+}

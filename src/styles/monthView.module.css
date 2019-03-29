@@ -36,17 +36,3 @@
   display: flex;
   border-bottom: 1px solid lightgray;
 }
-
-.gridCell {
-  flex: 1 1 0;
-  min-width: var(--min-cell-width);
-  padding: 10px;
-}
-
-.gridCell:not(:last-child) {
-  border-right: 1px solid lightgray;
-}
-
-.cellDate {
-  color: lightgray
-}

@@ -3,8 +3,9 @@ import { number, object } from "prop-types";
 import moment from "moment";
 
 import chunkArray from "../helpers/chunkArray";
+import DateCell from "./dateCell";
 
-import { monthViewComponent, monthViewHeader, gridWrapper, headerItem, weekRow, gridCell, cellDate } from "../styles/monthView.module.css";
+import { monthViewComponent, monthViewHeader, gridWrapper, headerItem, weekRow } from "../styles/monthView.module.css";
 
 const DAYS_OF_WEEK = ["sun", "mon", "tues", "wed", "thurs", "fri", "sat"];
 
@@ -42,14 +43,7 @@ export default class MonthView extends React.Component {
   renderGridCell = (date) => {
     const key = date.toString();
 
-    return (
-      <div
-        key={key}
-        className={gridCell}
-      >
-        <span className={cellDate}>{date.date()}</span>
-      </div>
-    );
+    return <DateCell key={key} date={date} month={this.props.month} />;
   }
 
   getDates = () => {
