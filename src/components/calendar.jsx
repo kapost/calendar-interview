@@ -12,7 +12,7 @@ const VIEW_MAPPING = {
 
 export default class Calendar extends React.Component {
   render() {
-    const { resolution, ...dateParams } = this.getRouteParams();
+    const { resolution, year, month, day } = this.props;
 
     const ViewComponent = VIEW_MAPPING[resolution] || MonthView;
     const momentizedDate = this.getMomentizedDate();
@@ -21,7 +21,9 @@ export default class Calendar extends React.Component {
       <div className={calendarComponent}>
         <div className={headerWrapper}>
           <Header
-            {...dateParams}
+            year={year}
+            month={month}
+            day={day}
             momentizedDate={this.getMomentizedDate()}
             onChangeDate={this.handleChangeDate}
             resolution={resolution}
@@ -29,25 +31,24 @@ export default class Calendar extends React.Component {
         </div>
         <div className={bodyWrapper}>
           <div className={viewWrapper}>
-            <ViewComponent {...dateParams} momentizedDate={momentizedDate} />
+            <ViewComponent
+              year={year}
+              month={month}
+              day={day}
+              momentizedDate={momentizedDate}
+            />
           </div>
-          <div className={contextPanelWrapper} />
+          <div className={sidePanelWrapper} />
         </div>
       </div>
     );
   }
 
   getMomentizedDate = () => {
-    const { year, month: humanMonth, day } = this.getRouteParams();
+    const { year, month: humanMonth, day } = this.props;
     const month = humanMonth - 1; // Jan === 0
 
     return moment([year, month, day]);
-  }
-
-  getRouteParams = () => {
-    const { resolution, year, month, day } = this.props.match.params;
-
-    return { resolution, year: Number(year), month: Number(month), day: Number(day) };
   }
 
   handleChangeDate = (updates) => {
@@ -55,7 +56,7 @@ export default class Calendar extends React.Component {
   }
 
   buildUrl = (params = {}) => {
-    const { resolution, year, month, day } = { ...this.getRouteParams(), ...params };
+    const { resolution, year, month, day } = { ...this.props, ...params };
 
     return `/${resolution}/${year}/${month}/${day}`;
   }
