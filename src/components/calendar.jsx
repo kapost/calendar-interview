@@ -45,8 +45,7 @@ export default class Calendar extends React.Component {
   }
 
   getMomentizedDate = () => {
-    const { year, month: humanMonth, day } = this.props;
-    const month = humanMonth - 1; // Jan === 0
+    const { year, month, day } = this.props;
 
     return moment([year, month, day]);
   }
@@ -58,6 +57,6 @@ export default class Calendar extends React.Component {
   buildUrl = (params = {}) => {
     const { resolution, year, month, day } = { ...this.props, ...params };
 
-    return `/${resolution}/${year}/${month}/${day}`;
+    return `/${resolution}/${year}/${month + 1}/${day}`;
   }
 }

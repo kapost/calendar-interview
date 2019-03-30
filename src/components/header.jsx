@@ -49,10 +49,10 @@ export default class Header extends React.Component {
     const baseParams = { day: 1, month, year: this.props.year };
 
     switch (month) {
-      case 13:
-        return { ...baseParams, month: 1, year: this.props.year + 1 };
-      case 0:
-        return { ...baseParams, month: 12, year: this.props.year - 1 };
+      case 12:
+        return { ...baseParams, month: 0, year: this.props.year + 1 };
+      case -1:
+        return { ...baseParams, month: 11, year: this.props.year - 1 };
       default:
         return baseParams;
     }
@@ -61,6 +61,6 @@ export default class Header extends React.Component {
   handleSetToday = () => {
     const [year, monthIndex, day] = moment().toArray();
 
-    this.props.onChangeDate({ year, month: monthIndex + 1, day });
+    this.props.onChangeDate({ year, month: monthIndex, day });
   }
 }

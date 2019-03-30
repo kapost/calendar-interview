@@ -5,7 +5,7 @@ import moment from "moment";
 import { gridCellComponent, thisMonthCell, todayCell } from "../styles/dateCell.module.css";
 
 export default function DateCell({ date, month }) {
-  const isThisMonth = month === date.month() + 1;
+  const isThisMonth = month === date.month();
 
   const isToday = date.isSame(moment(), "day");
 
