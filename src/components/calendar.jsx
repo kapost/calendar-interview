@@ -15,7 +15,6 @@ export default class Calendar extends React.Component {
     const { resolution, year, month, day } = this.props;
 
     const ViewComponent = VIEW_MAPPING[resolution] || MonthView;
-    const momentizedDate = this.getMomentizedDate();
 
     return (
       <div className={calendarComponent}>
@@ -35,7 +34,7 @@ export default class Calendar extends React.Component {
               year={year}
               month={month}
               day={day}
-              momentizedDate={momentizedDate}
+              momentizedDate={this.getMomentizedDate()}
             />
           </div>
           <div className={sidePanelWrapper} />
