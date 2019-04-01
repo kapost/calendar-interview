@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Calendar App
 
-## Available Scripts
+This is a simple React app that renders a custom calendar. Currently, it supports only a month view with the ability to switch between months and jump to today's date. We want to be able view and add events to the calendar. Additionally, we want to be able to view a single day and its events.
 
-In the project directory, you can run:
+Your job is to implement as many of the following features as you can:
+1) Implement a day view.
+2) Display events on the calendar in month view.
+3) Display events in day view.
+4) Add the ability to create new events.
 
-### `npm start`
+## Day View
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Navigating Day View
+- The Day View can be accessed a few ways:
+  - Through a correctly formatted url that represents an actual date (i.e. `/day/${year}/${month}/${day}`).
+  - By clicking on the day number in a cell in Month View.
+  - By pressing "Shift + D" on the keyboard.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Clicking the arrows at the top of the page navigate between days. The right arrow navigates one day into the future and the left arrow navigates one day into the past.
+- Clicking the month in the header returns the view to Month View.
+- Clicking the Today button jumps to today.
 
-### `npm test`
+### Displaying Day View
+  - The day of the week and the date of the day are displayed in the top left corner of the view.
+  - The date mentioned above remains fixed top of the page while the body is scrollable.
+  - Each hour in day view is 50px.
+  - The top of each hour is denoted by a horizontal line across the view with the hour in the format "H A" (e.g. "2 PM") on the left hand side.
+  - If the day is today, the date shows a special state (see wireframe).
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Displaying events
+Users must be able to add events to the calendar. Events have a title, an optional description, a start and end date, and a list of attendees. Each event has the following shape:
+```
+{
+  id: string.isRequired,
+  title: string.isRequired,
+  description: string,
+  startDate: string.isRequired (ISO 8601 format),
+  endDate: string.isRequired (ISO 8601 format),
+  attendees: arrayOf(string).isRequired,
+}
+```
 
-### `npm run build`
+#### Adding Events
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1) Events can be added to the calendar by clicking on the day in Month View. Events added this way will have a duration that spans the whole day.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+2) Events can be added by clicking on the Day View. Events added this way will span 1 hour by default and start at the nearest 30 minute increment before the time that corresponds to the cursor.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Events can be discarded and will not be added to the Redux store.
+- When the user clicks "Save" events will be added to the Redux store.
