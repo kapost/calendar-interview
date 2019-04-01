@@ -1,5 +1,24 @@
 # Calendar App
 
+## Set up
+To run the app, simply run
+```
+yarn start
+```
+
+If it's the first time you're running the app, seed the db with sample data:
+```
+yarn db:seed
+```
+
+Then run the server in a separate tab:
+```
+yarn json-server --watch src/db.json
+```
+
+
+
+
 This is a simple React app that renders a custom calendar. Currently, it supports only a month view with the ability to switch between months and jump to today's date. We want to be able view and add events to the calendar. Additionally, we want to be able to view a single day and its events.
 
 Your job is to implement as many of the following features as you can:
