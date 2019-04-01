@@ -1,8 +1,8 @@
 .gridCellComponent {
   flex: 1 1 0;
   min-width: var(--min-cell-width);
-  padding: 10px;
-  color: lightgray;
+  padding: 5px 10px 10px 5px;
+  color: #AAA;
 }
 
 .gridCellComponent:not(:last-child) {
@@ -10,11 +10,20 @@
 }
 
 .thisMonthCell {
-  color: gray;
+  color: #444;
 }
 
-.todayCell {
-  color: black;
+.dateBubble {
+  font-size: 12px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+}
+
+.todayBubble {
+  background-color: orangered;
+  color: white;
   font-weight: 600;
-  text-decoration: underline;
 }

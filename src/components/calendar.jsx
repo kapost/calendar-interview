@@ -4,7 +4,13 @@ import moment from "moment";
 import MonthView from "./monthView";
 import Header from "./header";
 
-import { calendarComponent, headerWrapper, viewWrapper, contextPanelWrapper, bodyWrapper } from "../styles/calendar.module.css";
+import {
+  calendarComponent,
+  headerWrapper,
+  viewWrapper,
+  sidePanelWrapper,
+  bodyWrapper,
+} from "../styles/calendar.module.css";
 
 const VIEW_MAPPING = {
   month: MonthView,
