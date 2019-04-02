@@ -18,7 +18,7 @@ const VIEW_MAPPING = {
 
 export default class Calendar extends React.Component {
   render() {
-    const { resolution, year, month, day } = this.props;
+    const { resolution, year, month, day, panelOpen, onTogglePanel } = this.props;
 
     const ViewComponent = VIEW_MAPPING[resolution] || MonthView;
 
@@ -31,6 +31,8 @@ export default class Calendar extends React.Component {
             day={day}
             momentizedDate={this.getMomentizedDate()}
             onChangeDate={this.handleChangeDate}
+            onTogglePanel={onTogglePanel}
+            panelOpen={panelOpen}
             resolution={resolution}
           />
         </div>
@@ -43,7 +45,7 @@ export default class Calendar extends React.Component {
               momentizedDate={this.getMomentizedDate()}
             />
           </div>
-          <div className={sidePanelWrapper} />
+          {panelOpen && <div className={sidePanelWrapper} />}
         </div>
       </div>
     );

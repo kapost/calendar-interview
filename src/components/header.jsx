@@ -1,15 +1,17 @@
 import React from "react";
-import { number, func } from "prop-types";
+import { bool, number, func } from "prop-types";
 import moment from "moment";
 
 import Icon from "./icon";
 
-import { headerComponent, changeDateButton, todayButton } from "../styles/header.module.css";
+import { headerComponent, changeDateButton, todayButton, panelToggleButton } from "../styles/header.module.css";
 
 export default class Header extends React.Component {
   static propTypes = {
     month: number.isRequired,
     onChangeDate: func.isRequired,
+    onTogglePanel: func.isRequired,
+    panelOpen: bool.isRequired,
   }
 
   render() {
@@ -23,16 +25,22 @@ export default class Header extends React.Component {
   renderMonthHeader = () => {
     return (
       <div className={headerComponent}>
-        <button className={todayButton} onClick={this.handleSetToday}>
-          Today
+        <div>
+          <button className={todayButton} onClick={this.handleSetToday}>
+            Today
+          </button>
+          <button className={changeDateButton} onClick={this.handleChangeMonthCurry(-1)}>
+            <Icon name="angle-left" />
+          </button>
+          <button className={changeDateButton} onClick={this.handleChangeMonthCurry(1)}>
+            <Icon name="angle-right" />
+          </button>
+          {this.props.momentizedDate.format("MMMM YYYY")}
+        </div>
+        <button className={panelToggleButton} onClick={this.props.onTogglePanel}>
+          {this.props.panelOpen && <Icon name="caret-square-right" solid={false} />}
+          {!this.props.panelOpen && <Icon name="caret-square-left" solid={false} />}
         </button>
-        <button className={changeDateButton} onClick={this.handleChangeMonthCurry(-1)}>
-          <Icon name="angle-left" />
-        </button>
-        <button className={changeDateButton} onClick={this.handleChangeMonthCurry(1)}>
-          <Icon name="angle-right" />
-        </button>
-        {this.props.momentizedDate.format("MMMM YYYY")}
       </div>
     )
   }

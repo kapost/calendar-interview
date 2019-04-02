@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-around;
   flex: 0 0 auto;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .gridWrapper {
@@ -29,5 +29,5 @@
 .weekRow {
   display: flex;
   flex: 1 1 auto;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #d3d3d3;
 }

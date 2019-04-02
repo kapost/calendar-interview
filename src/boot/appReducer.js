@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-const empty = (state = {}, action = {}) => state;
+import ui from "../reducers/uiReducer";
 
-export default combineReducers({ empty });
+export default combineReducers({ ui });
