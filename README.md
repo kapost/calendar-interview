@@ -3,10 +3,14 @@
 This is a simple React app that renders a custom calendar. Currently, it supports only a month view with the ability to switch between months and jump to today's date. We want to be able view and add events to the calendar. Additionally, we want to be able to view a single day and its events.
 
 Your job is to implement as many of the following features as you can:
-1) Fetch events and display on the appropriate day of Month View of the calendar.
-1) Implement a Day View.
-3) Display events in Day View.
-4) Add the ability to create new events.
+1) Fork the repository
+2) Fetch events and display on the appropriate day of Month View of the calendar.
+3) Implement a Day View.
+4) Display events in Day View.
+5) Add the ability to create new events.
+6) Send your fork to the hiring manager who sent you this interview
+
+We are looking for clean, well structured, tested code & commits. Show us your best work. Quality over quantity. We recommend spending between 2 and 3 hours on this.
 
 ## Set up
 To run the app, simply run
