@@ -76,7 +76,7 @@ Users must be able to see their events on the calendar.
 - The date mentioned above remains fixed top of the page while the body is scrollable.
 - Each hour in day view is 50px.
 - The top of each hour is denoted by a horizontal line across the view with the hour in the format "H A" (e.g. "2 PM") on the left hand side.
-- If the day is today, the date shows a special state (see wireframe).
+- If the day is today, the date shows a special state indicating it is today.
 
 ### Displaying events in Day View
 - Similarly to MonthView, clicking on an event will open the side panel, showing its details.
